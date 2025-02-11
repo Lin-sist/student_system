@@ -9,27 +9,28 @@ struct student
         int id;
     };
 
-void input(struct student stu[N])
-{
+// 通用输入函数
+void inputField(char *field, const char *prompt) {
+    printf("%s", prompt);
+    scanf("%s", field);  // 输入字符串
+}
+
+// 输入学生信息的函数
+void input(struct student stu[N]) {
     int i;
-    for (i = 0; i < N; i++)
-    {
-        getchar();//清除缓存区的换行符；
-        
-        //输入学生信息；
-        printf("请输入学生%d的姓名: ", i + 1);
-        scanf("%s", stu[i].name);
-        
-        printf("请输入学生%d的性别: ", i + 1);
-        scanf("%s", stu[i].sex);
+    for (i = 0; i < N; i++) {
+        // 清除缓冲区的换行符
+        getchar();
 
-        printf("请输入学生%d的专业: ", i + 1);
-        scanf("%s", stu[i].major);
-
-        printf("请输入学生%d的年龄: ", i + 1);
+        // 输入学生信息
+        inputField(stu[i].name, "请输入学生姓名: ");
+        inputField(stu[i].sex, "请输入学生性别: ");
+        inputField(stu[i].major, "请输入学生专业: ");
+        
+        printf("请输入学生年龄: ");
         scanf("%d", &stu[i].age);
 
-        printf("请输入学生%d的学号: ", i + 1);
+        printf("请输入学生学号: ");
         scanf("%d", &stu[i].id);
     }
 }
